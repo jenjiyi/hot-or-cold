@@ -1,12 +1,12 @@
 
 $(document).ready(function(){
-<<<<<<< HEAD
+
 	newGame();
 	/*--- Display information modal box ---*/
   	$(".what").click(function(){
     	$(".overlay").fadeIn(1000);
   	});
-=======
+
 	
 	/*--- Display information modal box ---*/
   	$(".what").click(function(){
@@ -14,13 +14,11 @@ $(document).ready(function(){
 
   	});
 
->>>>>>> 209c990e47738728b5a7e870f496e9ac69125bf2
   	/*--- Hide information modal box ---*/
   	$("a.close").click(function(){
   		$(".overlay").fadeOut(1000);
   	});
 
-<<<<<<< HEAD
 	/*--- Restart game ---*/
   	$(".new").click(function(){
   		newGame();
@@ -83,8 +81,5 @@ $(document).ready(function(){
 
 });
  
-=======
 });
-
->>>>>>> 209c990e47738728b5a7e870f496e9ac69125bf2
 
