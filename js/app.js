@@ -4,7 +4,6 @@ $(document).ready(function(){
 	/*--- Display information modal box ---*/
   	$(".what").click(function(){
     	$(".overlay").fadeIn(1000);
-
   	});
   	/*--- Hide information modal box ---*/
   	$("a.close").click(function(){
@@ -37,8 +36,24 @@ $(document).ready(function(){
 
   		
   		//getValue of input field #userGuess on button click #guessButton store as guessValue
-  		//input validation 
-		//ensures that the user has supplied a numeric input between 1 and 100
+  		  $('#guessButton').on('click', function(e){
+  				e.preventDefault();
+    			var getVal =+ $('#userGuess').val();
+    
+   				 //Checking if the typed value is a number
+    			if (getVal % 1 != 0 || getVal > 100 || getVal < 1  || isNaN(getVal)){
+    	 		alert('Type only numbers between 1 and 100.');
+      			$('#userGuess').val("");
+     
+   				 }else{
+      			$('#feedback').empty();
+      			//feedback();
+    			//guessCount();
+    			//guessLog();
+    			$('#userGuess').val("");
+    			}
+  			});
+  		
 
 //feedback()
 	//append to div#feedback
