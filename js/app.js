@@ -21,40 +21,47 @@ $(document).ready(function(){
   	$(".new").click(function(){
   		newGame();
   	});
-  	/*--- random integer function ---*/
+  	/*--- random integer function (inclusive) ---*/
   	function getSecretNumber(min, max) {
   		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
+  /*--- clear game ---*/
+  function clearFields(){
+        //clear fields div#feedback, span#count, ul#guessList 
+        //$('#feedback').empty();
+        $('#count').empty();
+        $('#guessList').empty();
+          }
 
 	/*--- start new game ---*/
 	function newGame(){
 		//clear fields div#feedback, span#count, ul#guessList 
-
+    clearFields();
 		// generate secret number between 1-100 inclusive
 		var secretNumber = getSecretNumber(1, 100);
 		console.log(secretNumber);
 		//guessVal()
-		//validate()
+	
 		//feedback()
 		//guessCount()
 		//guessLog()
 
 	}
-
-  		
   		//getValue of input field #userGuess on button click #guessButton store as guessValue
   		  $('#guessButton').on('click', function(e){
   				e.preventDefault();
     			var getVal =+ $('#userGuess').val();
     
-   				 //Checking if the typed value is a number
+   				 //Checks if the typed value is an integer from 1-100
     			if (getVal % 1 != 0 || getVal > 100 || getVal < 1  || isNaN(getVal)){
     	 		alert('Type only numbers between 1 and 100.');
       			$('#userGuess').val("");
      
    				 }else{
-      			$('#feedback').empty();
-      			//feedback();
+            
+
+            $('#guessList').append("<li>"+getVal+"</li>");
+
     			//guessCount();
     			//guessLog();
     			$('#userGuess').val("");
@@ -77,7 +84,7 @@ $(document).ready(function(){
 	//print guesses in <li> to ul#guessList 
 
 
-});
+
  
 });
 
