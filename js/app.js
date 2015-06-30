@@ -25,10 +25,14 @@ $(document).ready(function(){
   	function getSecretNumber(min, max) {
   		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
+  /*--- get difference ---*/
+  function diff(x, y) { 
+    return Math.abs(x - y) 
+  };
   /*--- clear game ---*/
   function clearFields(){
         //clear fields div#feedback, span#count, ul#guessList 
-        //$('#feedback').empty();
+       
         $('#count').empty();
         $('#guessList').empty();
           }
@@ -40,45 +44,52 @@ $(document).ready(function(){
 		// generate secret number between 1-100 inclusive
 		var secretNumber = getSecretNumber(1, 100);
 		console.log(secretNumber);
-		//guessVal()
-	
-		//feedback()
-		//guessCount()
-		//guessLog()
+		  //getValue of input field #userGuess on button click #guessButton store as guessValue
+        $('#guessButton').on('click', function(e){
+          e.preventDefault();
+          var getVal =+ $('#userGuess').val();
+    
+           //Checks if the typed value is an integer from 1-100
+          if (getVal % 1 != 0 || getVal > 100 || getVal < 1  || isNaN(getVal)){
+          alert('Type only numbers between 1 and 100.');
+            $('#userGuess').val("");
+     
+           }else{
+            var difference = diff(getVal, secretNumber);
+              console.log(difference);
+          feedback(difference);
+          guessLog(getVal);
+          guessCount();
+          
+          }
+        });
 
 	}
-  		//getValue of input field #userGuess on button click #guessButton store as guessValue
-  		  $('#guessButton').on('click', function(e){
-  				e.preventDefault();
-    			var getVal =+ $('#userGuess').val();
-    
-   				 //Checks if the typed value is an integer from 1-100
-    			if (getVal % 1 != 0 || getVal > 100 || getVal < 1  || isNaN(getVal)){
-    	 		alert('Type only numbers between 1 and 100.');
-      			$('#userGuess').val("");
-     
-   				 }else{
-            //guessCount();
-
-            //$('#guessList').append("<li>"+getVal+"</li>");
-
-    			
-    			guessLog(getVal);
-          guessCount();
-    			$('#userGuess').val("");
-    			}
-  			});
+  	
   		
 //display guess feedback
-function feedback(){
-	//append to div#feedback
-  if (getVal >= secretNumber){}
-	// >= 50 "ice cold"
-	// 31 - 50 "cold"
-	// 21 - 30  "warm"
-	// 11- 20 "hot"
-	// 1 - 10 "very hot"
-  //else "Congratulations! You guessed the right number." 
+function feedback(d){
+  //append to div#feedback
+  if (d >= 50){
+    $("#feedback").append("You're ice cold. Guess again.");
+  }
+  else if (d >= 30 ){
+		    $("#feedback").append("You're cold. Guess again.");
+  }
+  else if (d >= 20 ){
+        $("#feedback").append("You're warm. Guess again.");
+  }
+  else  if (d >= 11) {
+        $("#feedback").append("You're hot. Guess again.");
+  }
+  else if (d >= 1){
+        $("#feedback").append("You're very hot. Guess again.");
+      }
+	else {
+    $("#feedback").append("You guessed right. Congratulations!");
+  };
+  $('#userGuess').val("");
+
   }
 
 //count guesses
