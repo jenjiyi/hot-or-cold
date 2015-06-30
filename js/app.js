@@ -31,8 +31,7 @@ $(document).ready(function(){
   };
   /*--- clear game ---*/
   function clearFields(){
-        //clear fields div#feedback, span#count, ul#guessList 
-       
+        $('#feedback').empty().html("Make your Guess!");
         $('#count').empty();
         $('#guessList').empty();
           }
@@ -60,10 +59,8 @@ $(document).ready(function(){
           feedback(difference);
           guessLog(getVal);
           guessCount();
-          
           }
         });
-
 	}
   	
   		
@@ -71,23 +68,25 @@ $(document).ready(function(){
 function feedback(d){
   //append to div#feedback
   if (d >= 50){
-    $("#feedback").append("You're ice cold. Guess again.");
+    $("#feedback").html("You're ice cold. Guess again.");
   }
   else if (d >= 30 ){
-		    $("#feedback").append("You're cold. Guess again.");
+		    $("#feedback").html("You're cold. Guess again.");
   }
   else if (d >= 20 ){
-        $("#feedback").append("You're warm. Guess again.");
+        $("#feedback").html("You're warm. Guess again.");
   }
   else  if (d >= 11) {
-        $("#feedback").append("You're hot. Guess again.");
+        $("#feedback").html("You're hot. Guess again.");
   }
-  else if (d >= 1){
-        $("#feedback").append("You're very hot. Guess again.");
+  else if (d >= 1) {
+        $("#feedback").html("You're very hot. Guess again.");
       }
 	else {
-    $("#feedback").append("You guessed right. Congratulations!");
+    $("#feedback").html("You're right. Congratulations!");
+    $("#guessButton").prop("disabled", true);
   };
+  //$('#feedback').empty().html("Make your Guess!");
   $('#userGuess').val("");
 
   }
@@ -104,8 +103,5 @@ function guessLog(x){
   $('#guessList').append("<li>"+ x +"</li>");
 }
 
-
-
- 
 });
 

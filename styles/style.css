@@ -258,7 +258,6 @@ input.button {
 	-o-transition: background 1s ease-in-out;
 	transition: background 1s ease-in-out;
 }
-
 input.button:hover {
 	background: #e64c65;
 	color: #fff;
