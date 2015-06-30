@@ -58,30 +58,40 @@ $(document).ready(function(){
       			$('#userGuess').val("");
      
    				 }else{
-            
+            //guessCount();
 
-            $('#guessList').append("<li>"+getVal+"</li>");
+            //$('#guessList').append("<li>"+getVal+"</li>");
 
-    			//guessCount();
-    			//guessLog();
+    			
+    			guessLog(getVal);
+          guessCount();
     			$('#userGuess').val("");
     			}
   			});
   		
-
-//feedback()
+//display guess feedback
+function feedback(){
 	//append to div#feedback
+  if (getVal >= secretNumber){}
 	// >= 50 "ice cold"
 	// 31 - 50 "cold"
 	// 21 - 30  "warm"
 	// 11- 20 "hot"
 	// 1 - 10 "very hot"
+  //else "Congratulations! You guessed the right number." 
+  }
 
-//guessCount()
+//count guesses
+function guessCount(){
+  $("#count").html(function(i, val) { return val*1+1 });
 	// span#count default 0
+}
 
-//guessLog()
+//log each guess
+function guessLog(x){
 	//print guesses in <li> to ul#guessList 
+  $('#guessList').append("<li>"+ x +"</li>");
+}
 
 
 
