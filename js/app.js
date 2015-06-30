@@ -5,7 +5,6 @@ $(document).ready(function(){
   	$(".what").click(function(){
     	$(".overlay").fadeIn(1000);
   	});
-	
 	/*--- Display information modal box ---*/
   	$(".what").click(function(){
     	$(".overlay").fadeIn(1000);
@@ -103,5 +102,8 @@ function guessLog(x){
   $('#guessList').append("<li>"+ x +"</li>");
 }
 
+});
+
+ 
 });
 
