@@ -33,7 +33,18 @@ $(document).ready(function(){
         $('#feedback').empty().html("Make your Guess!");
         $('#count').empty();
         $('#guessList').empty();
+        $("#userGuess").prop("disabled", false).prop("placeholder", "Enter your Guess");
           }
+  /*--- count guesses ---*/
+  function guessCount(){
+    $("#count").html(function(i, val) { return val*1+1 });
+  }
+
+  /*--- log each guess ---*/
+function guessLog(x){
+  //print guesses in <li> to ul#guessList 
+  $('#guessList').append("<li>"+ x +"</li>");
+}
 
 	/*--- start new game ---*/
 	function newGame(){
@@ -49,19 +60,19 @@ $(document).ready(function(){
     
            //Checks if the typed value is an integer from 1-100
           if (getVal % 1 != 0 || getVal > 100 || getVal < 1  || isNaN(getVal)){
-          alert('Type only numbers between 1 and 100.');
+          //alert('Type only numbers between 1 and 100.');
+          $("#feedback").html("Type only numbers between 1 and 100.");
             $('#userGuess').val("");
      
            }else{
             var difference = diff(getVal, secretNumber);
               console.log(difference);
-          feedback(difference);
-          guessLog(getVal);
-          guessCount();
+            feedback(difference);
+            guessLog(getVal);
+            guessCount();
           }
         });
-	}
-  	
+	}	
   		
 //display guess feedback
 function feedback(d){
@@ -83,6 +94,7 @@ function feedback(d){
       }
 	else {
     $("#feedback").html("You're right. Congratulations!");
+    $("#userGuess").prop("disabled", true).prop("placeholder", "Woohoo!");
     $("#guessButton").prop("disabled", true);
   };
   //$('#feedback').empty().html("Make your Guess!");
@@ -90,20 +102,4 @@ function feedback(d){
 
   }
 
-//count guesses
-function guessCount(){
-  $("#count").html(function(i, val) { return val*1+1 });
-	// span#count default 0
-}
-
-//log each guess
-function guessLog(x){
-	//print guesses in <li> to ul#guessList 
-  $('#guessList').append("<li>"+ x +"</li>");
-}
-
 });
-
- 
-});
-
