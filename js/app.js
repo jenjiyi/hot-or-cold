@@ -31,7 +31,7 @@ $(document).ready(function(){
   /*--- clear game ---*/
   function clearFields(){
         $('#feedback').empty().html("Make your Guess!");
-        $('#validate').empty();
+        $('#validate').html("");
         $('#count').empty();
         $('#guessList').empty();
         $("#userGuess").prop("disabled", false).prop("placeholder", "Enter your Guess");
@@ -71,7 +71,6 @@ function feedback(d){
   };
   //$('#feedback').empty().html("Make your Guess!");
   $('#userGuess').val("");
-
   };
 
 	/*--- start new game ---*/
@@ -84,16 +83,15 @@ function feedback(d){
 		  //getValue of input field #userGuess on button click #guessButton store as guessValue
         $('#guessButton').on('click', function(e){
           e.preventDefault();
-          $("#validate").empty();
+          $("#validate").html("");
           var getVal =+ $('#userGuess').val();
            //Checks if the typed value is an integer from 1-100
           if (getVal % 1 != 0 || getVal > 100 || getVal < 1  || isNaN(getVal)){
           //alert('Type only numbers between 1 and 100.');
           $("#validate").html("Guess only numbers between 1 and 100.");
             $('#userGuess').val("");
-     
-           }else{
-            
+           }else{           
+          $("#validate").html("");
             var difference = diff(getVal, secretNumber);
             console.log(difference);
             feedback(difference);
