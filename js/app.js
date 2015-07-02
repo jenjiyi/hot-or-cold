@@ -83,10 +83,6 @@ function feedback(d){
 		console.log(secretNumber);
 	};	
  
-//getValue of input field #userGuess on button click #guessButton store as guessValue
-
-		var secretNumber = getSecretNumber(1, 100);
-		console.log(secretNumber);
 		  //getValue of input field #userGuess on button click #guessButton store as guessValue
         $('#guessButton').on('click', function(e){
           e.preventDefault();
@@ -106,7 +102,5 @@ function feedback(d){
             guessCount();
           }
         }); 		
-        });
-	};	
 
 });
