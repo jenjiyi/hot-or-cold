@@ -78,11 +78,16 @@ function feedback(d){
 		//clear fields div#feedback, span#count, ul#guessList 
     clearFields();
 		// generate secret number between 1-100 inclusive
+
 		secretNumber = getSecretNumber(1, 100);
 		console.log(secretNumber);
 	};	
  
 //getValue of input field #userGuess on button click #guessButton store as guessValue
+
+		var secretNumber = getSecretNumber(1, 100);
+		console.log(secretNumber);
+		  //getValue of input field #userGuess on button click #guessButton store as guessValue
         $('#guessButton').on('click', function(e){
           e.preventDefault();
           $("#validate").html("");
@@ -101,5 +106,7 @@ function feedback(d){
             guessCount();
           }
         }); 		
+        });
+	};	
 
 });
